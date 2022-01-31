@@ -1,35 +1,34 @@
+import java.util.Objects;
+
 public class Car {
-    private String brand;
-    private String name;
+    private final String BRAND;
+    private final String NAME;
     private boolean onSale;
 
 
     public Car(String brand, String name, boolean onSale) {
-        this.brand = brand;
-        this.name = name;
+        if(brand == null || name == null) {
+            System.out.println("Error");
+        }
+        this.BRAND = brand;
+        this.NAME = name;
         this.onSale = onSale;
     }
 
 
-    public String getBrand() {
-        return brand;
+    public String getBRAND() {
+        return BRAND;
     }
 
-    public String getName() {
-        return name;
+    public String getNAME() {
+        return NAME;
     }
 
     public boolean isOnSale() {
         return onSale;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public void setOnSale(boolean onSale) {
         this.onSale = onSale;
@@ -37,6 +36,20 @@ public class Car {
 
     @Override
     public String toString() {
-        return String.format("Car{brand = '%s', name = '%s', onSale = '%s'}", brand, name, onSale);
+        return String.format("Car{brand = '%s', name = '%s', onSale = '%s'}", BRAND, NAME, onSale);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return BRAND.equals(car.BRAND) && NAME.equals(car.NAME);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(BRAND, NAME);
     }
 }
+
