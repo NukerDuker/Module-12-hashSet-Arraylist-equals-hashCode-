@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Car {
+public class Car{
     private final String BRAND;
     private final String NAME;
     private boolean onSale;
@@ -51,5 +51,6 @@ public class Car {
     public int hashCode() {
         return Objects.hash(BRAND, NAME);
     }
+
 }
 

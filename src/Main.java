@@ -1,3 +1,5 @@
+import com.sun.source.tree.Tree;
+
 import java.util.*;
 
 public class Main {
@@ -80,8 +82,12 @@ public class Main {
             }
         }
 
-        for (Map.Entry<Car, Integer> carEntry : carMap.entrySet()) {
-            System.out.println(carEntry.getKey() + "=" + carEntry.getValue());
+        Set<Car> carSet = new TreeSet<>(new CarComparator().reversed());
+        carSet.addAll(carList);
+
+        for (Car car : carSet) {
+            System.out.println(car.getNAME());
         }
+
     }
 }
