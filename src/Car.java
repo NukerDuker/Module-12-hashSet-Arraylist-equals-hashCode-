@@ -44,7 +44,7 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return BRAND.equals(car.BRAND) && NAME.equals(car.NAME);
+        return BRAND.equals(car.BRAND) && NAME.equals(car.NAME)&& onSale == car.onSale;
     }
 
     @Override

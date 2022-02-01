@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
 
@@ -19,7 +16,7 @@ public class Main {
         Car car7 = new Car(KIA, "Ceed", false);
         Car car8 = new Car(TOYOTA, "Yaris", false);
         Car car9 = new Car(BMW, "320i", false);
-        Car car10 = new Car(TOYOTA, "Corolla", false);
+        Car car10 = new Car(TOYOTA, "Corolla", true);
         Car car11 = new Car(TOYOTA, "Camry", false);
         Car car12 = new Car(KIA, "Rio", false);
         Car car13 = new Car(BMW, "X5", false);
@@ -27,13 +24,13 @@ public class Main {
         Car car15 = new Car(BMW, "X6", false);
         Car car16 = new Car(TOYOTA, "Raw 4", true);
         Car car17 = new Car(KIA, "Ceed", false);
-        Car car18 = new Car(TOYOTA, "Yaris", false);
+        Car car18 = new Car(TOYOTA, "Yaris", true);
         Car car19 = new Car(BMW, "320i", false);
         Car car20 = new Car(TOYOTA, "Corolla", false);
         Car car21 = new Car(TOYOTA, "Camry", false);
         Car car22 = new Car(KIA, "Rio", false);
         Car car23 = new Car(BMW, "X5", false);
-        Car car24 = new Car(BMW, "X3", false);
+        Car car24 = new Car(BMW, "X3", true);
         Car car25 = new Car(BMW, "X6", false);
         Car car26 = new Car(TOYOTA, "Raw 4", true);
         Car car27 = new Car(KIA, "Ceed", false);
@@ -73,9 +70,18 @@ public class Main {
         carList.add(car29);
         carList.add(car30);
 
-        Set<Car> carSet = new HashSet<>(carList);
-        for(Car car : carSet){
-            System.out.println(car);
+        Map<Car, Integer> carMap = new HashMap<>();
+        for (Car car : carList) {
+            if (carMap.containsKey(car)){
+                int value = carMap.get(car);
+                carMap.put(car, ++value);
+            } else {
+                carMap.put(car, 1);
+            }
+        }
+
+        for (Map.Entry<Car, Integer> carEntry : carMap.entrySet()) {
+            System.out.println(carEntry.getKey() + "=" + carEntry.getValue());
         }
     }
 }
